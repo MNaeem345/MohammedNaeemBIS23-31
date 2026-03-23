@@ -1,7 +1,42 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
 
+.container2 {
+	background: white;
+	padding: 30px;
+	border-radius: 10px;
+	width: 300px;
+	margin: auto;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
+h1 {
+	margin-bottom: 20px;
+}
+
+input {
+	width: 90%;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+button {
+	padding: 10px 20px;
+	background: #007BFF;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button:hover {
+	background: #0056b3;
+}
+
+.result {
+	margin-top: 15px;
+	font-weight: bold;
+}
 
 /* Basic reset and navbar styling */
 * {
@@ -4022,3 +4057,5 @@ input, select, textarea {
 			opacity: 1;
 			visibility: visible;
 		}
+
+		

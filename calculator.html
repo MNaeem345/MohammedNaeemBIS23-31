@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MPG Calculator</title>
+<link rel="stylesheet" href="assets/css/main.css" />
+
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+   
+    margin-top: 50px;
+}
+
+::placeholder {
+    color: gray;
+    font-style: italic;
+}
+
+.container {
+   
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    color: #007BFF;
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+
+
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Header -->
+            
+
+        <!-- Menu -->
+        <nav class="navbar" id="header">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+            
+                
+            </ul>
+        </nav>
+
+        <!-- Banner -->
+            
+        <!-- Banner -->
+        <section id="banner" class="major">
+            <div class="inner">
+                <header class="major">
+                    <h1>Calculator</h1>
+                </header>
+                
+            </div>
+        </section>
+    
+
+    </div>
+
+<div class="container">
+
+    <!-- Logo / Title -->
+    <h1>🚗 MPG Calculator</h1>
+
+    <!-- Inputs -->
+    <p>Miles Traveled</p>
+    <input type="number" id="miles" placeholder="Miles Traveled">
+    <br/>
+
+    <p>Gallons Used</p>
+    <input type="number" id="gallons" placeholder="Gallons Used">
+
+    <!-- Button -->
+    <button onclick="calculateMPG()">Calculate</button>
+
+    <!-- Output -->
+    <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calculateMPG() {
+    let miles = document.getElementById("miles").value;
+    let gallons = document.getElementById("gallons").value;
+
+    miles = Number(miles);
+    gallons = Number(gallons);
+
+    if (gallons === 0) {
+        document.getElementById("result").innerHTML = "Cannot divide by zero";
+        return;
+    }
+
+    let mpg = miles / gallons;
+
+    document.getElementById("result").innerHTML =
+        "Miles per Gallon: " + mpg.toFixed(2);
+}
+</script>
+
+</body>
+</html>
