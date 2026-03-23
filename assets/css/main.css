@@ -51,7 +51,7 @@ button:hover {
 }
 
 .nav-menu {
-    display: flex;
+    display:flex;
     list-style: none;
     justify-content: space-around;
 }
