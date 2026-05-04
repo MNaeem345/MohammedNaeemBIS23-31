@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paycheck Calculator</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* UNIQUE WRAPPER */
+        .pcalc-wrapper {
+            font-family: Arial, sans-serif;
+            
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .pcalc-box {
+            
+            padding: 30px;
+            
+            border-radius: 10px;
+            width: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .pcalc-title,
+        .pcalc-subtitle {
+            text-align: center;
+        }
+
+        .pcalc-label {
+            font-weight: bold;
+        }
+
+        .pcalc-input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .pcalc-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a2f4a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pcalc-btn:hover {
+            background-color: #1d2235;
+        }
+
+        .pcalc-result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #1c1f50;
+            border-radius: 5px;
+        }
+
+        .pcalc-code {
+            background-color: #1e1e1e;
+            color: #00ffcc;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="pcalc-wrapper">
+
+    <nav class="navbar" id="header">
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+
+        </ul>
+    </nav>
+    <div class="pcalc-box">
+
+        <h2 class="pcalc-title">Paycheck Calculator</h2>
+
+        <label class="pcalc-label">Hours Worked:</label>
+        <input type="text" id="pcalc-hours" class="pcalc-input">
+
+        <label class="pcalc-label">Rate of Pay ($):</label>
+        <input type="text" id="pcalc-rate" class="pcalc-input">
+
+        <button class="pcalc-btn" onclick="pcalcCalculate()">Calculate Pay</button>
+
+        <h3 class="pcalc-subtitle">Result</h3>
+        <p id="pcalc-result" class="pcalc-result"></p>
+
+        <h3 class="pcalc-subtitle">PHP Code (paycheck.php)</h3>
+
+        <pre class="pcalc-code">
+&lt;?php
+$hours = $_POST['hours'];
+$rate = $_POST['rate'];
+
+$salary = $hours * $rate;
+
+echo "Hours Worked: " . $hours . "&lt;br&gt;";
+echo "Rate of Pay: $" . $rate . "&lt;br&gt;";
+echo "Total Salary: $" . $salary;
+?&gt;
+        </pre>
+
+    </div>
+</div>
+
+<script>
+function pcalcCalculate() {
+    let hours = document.getElementById("pcalc-hours").value;
+    let rate = document.getElementById("pcalc-rate").value;
+
+    if (hours === "" || rate === "") {
+        document.getElementById("pcalc-result").innerHTML = "Please enter both values.";
+        return;
+    }
+
+    if (isNaN(hours) || isNaN(rate)) {
+        document.getElementById("pcalc-result").innerHTML = "Enter valid numbers only.";
+        return;
+    }
+
+    let salary = hours * rate;
+
+    document.getElementById("pcalc-result").innerHTML =
+        "Hours Worked: " + hours + "<br>" +
+        "Rate of Pay: $" + rate + "<br>" +
+        "<strong>Total Salary: $" + salary.toFixed(2) + "</strong>";
+}
+</script>
+
+</body>
+</html>
