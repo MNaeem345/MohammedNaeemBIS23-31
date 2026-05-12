@@ -4,88 +4,56 @@
     <title>Paycheck Calculator</title>
     <link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-        /* UNIQUE WRAPPER */
-        .pcalc-wrapper {
-            font-family: Arial, sans-serif;
-            
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-        }
-
-        .pcalc-box {
-            
-            padding: 30px;
-            
-            border-radius: 10px;
-            width: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .pcalc-title,
-        .pcalc-subtitle {
-            text-align: center;
-        }
-
-        .pcalc-label {
-            font-weight: bold;
-        }
-
-        .pcalc-input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .pcalc-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #2a2f4a;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .pcalc-btn:hover {
-            background-color: #1d2235;
-        }
-
-        .pcalc-result {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #1c1f50;
-            border-radius: 5px;
-        }
-
-        .pcalc-code {
-            background-color: #1e1e1e;
-            color: #00ffcc;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 13px;
-        }
-    </style>
+    
 </head>
 
 <body>
+    
 
 <div class="pcalc-wrapper">
 
     <nav class="navbar" id="header">
+        <div class="nav-logo">
+            <a href="index.html">Mohammed Naeem</a>
+        </div>
+    
         <ul class="nav-menu">
-            <li><a href="index.html">Home</a></li>
-
+            <li><a href="index.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+    
+            <li class="dropdown">
+                <a href="#">Assignments ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="php.html">PHP Loops</a></li>
+                    <li><a href="javascript.html">JavaScript Presentation</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="random.html">Random Assignment</a></li>
+                    <li><a href="paycheck.html">Salary Calculator</a></li>
+                </ul>
+            </li>
+    
+            <li class="dropdown">
+                <a href="#">Forms ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/index.html?i=1">PHP Form</a></li>
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/sqlform.html">SQL Form</a></li>
+                </ul>
+            </li>
+    
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
-    <div class="pcalc-box">
 
-        <h2 class="pcalc-title">Paycheck Calculator</h2>
+    <section id="banner" class="major">
+        <div class="inner">
+            <header class="major">
+                <h1>Paycheck Calculator</h1>
+            </header>
+            
+        </div>
+    </section>
+    <div class="pcalc-box">
 
         <label class="pcalc-label">Hours Worked:</label>
         <input type="text" id="pcalc-hours" class="pcalc-input">
