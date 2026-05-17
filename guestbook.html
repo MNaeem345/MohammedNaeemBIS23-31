@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Book</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+<div id="wrapper">
+
+    <nav class="navbar" id="header">
+        <div class="nav-logo">
+            <a href="index.html">Mohammed Naeem</a>
+        </div>
+    
+        <ul class="nav-menu">
+            <li><a href="index.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+    
+            <li class="dropdown">
+                <a href="#">Assignments ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="php.html">PHP Loops</a></li>
+                    <li><a href="javascript.html">JavaScript Presentation</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="random.html">Random Assignment</a></li>
+                    <li><a href="paycheck.html">Salary Calculator</a></li>
+                    <li><a href="guestbook.html">Guestbook</a></li>
+                    <li><a href="mortgage.html">Mortgage Calculator</a></li>
+                </ul>
+            </li>
+    
+            <li class="dropdown">
+                <a href="#">Forms ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/index.html?i=1">PHP Form</a></li>
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/sqlform.html">SQL Form</a></li>
+                </ul>
+            </li>
+    
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section id="banner" class="major">
+        <div class="inner">
+            <header class="major">
+                <h1>Guestbook Application</h1>
+            </header>
+            <h3>Submit a message and see how it would be saved into a MySQL database.</h3>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2>Sign the Guestbook</h2>
+
+        <form onsubmit="submitGuestbook(event)">
+            <label>Name:</label>
+            <input type="text" id="guestName" placeholder="Enter your name" required>
+
+            <label>Message:</label>
+            <textarea id="guestMessage" placeholder="Write your message" required></textarea>
+
+            <button type="submit">Post Message</button>
+        </form>
+
+        <div id="databaseMessage" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Simulated Database Entries</h2>
+        <div id="guestbookEntries"></div>
+    </div>
+
+    <div class="container">
+        <h2>PHP + MySQL Code That Would Save This to the Database</h2>
+
+<pre>
+&lt;?php
+$servername = "localhost";
+$username = "your_db_username";
+$password = "your_db_password";
+$dbname = "guestbook_app";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $message = $_POST['message'];
+
+    $sql = "INSERT INTO guestbook_entries (name, message)
+            VALUES ('$name', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Input was sent to the database.";
+    } else {
+        echo "Error: " . $conn->error;
+    }
+}
+
+$result = $conn->query("SELECT * FROM guestbook_entries ORDER BY submitted_at DESC");
+
+while($row = $result->fetch_assoc()) {
+    echo "&lt;div class='entry'&gt;";
+    echo "&lt;p&gt;&lt;strong&gt;" . htmlspecialchars($row['name']) . "&lt;/strong&gt; wrote:&lt;/p&gt;";
+    echo "&lt;p&gt;" . nl2br(htmlspecialchars($row['message'])) . "&lt;/p&gt;";
+    echo "&lt;small&gt;Posted on " . $row['submitted_at'] . "&lt;/small&gt;";
+    echo "&lt;/div&gt;";
+}
+?&gt;
+</pre>
+    </div>
+
+</div>
+
+<script>
+function submitGuestbook(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("guestName").value;
+    let message = document.getElementById("guestMessage").value;
+    let date = new Date().toLocaleString();
+
+    document.getElementById("databaseMessage").innerHTML =
+        "<strong>Input was sent to the database.</strong><br><br>" +
+        "Name submitted: " + name + "<br>" +
+        "Message submitted: " + message;
+
+    let entry = `
+        <div class="entry">
+            <p><strong>${name}</strong> wrote:</p>
+            <p>${message}</p>
+            <small>Posted on ${date}</small>
+            <hr>
+        </div>
+    `;
+
+    document.getElementById("guestbookEntries").innerHTML =
+        entry + document.getElementById("guestbookEntries").innerHTML;
+
+    document.getElementById("guestName").value = "";
+    document.getElementById("guestMessage").value = "";
+}
+</script>
+
+</body>
+</html>
+
