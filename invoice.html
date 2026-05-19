@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Calculator Form</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: #2a2f4a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.nav-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 24px 16px;
+    display: block;
+    font-size: 14px;
+}
+
+.nav-menu a:hover {
+    background: #3d456d;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li a {
+    color: #2a2f4a;
+    padding: 14px 18px;
+}
+
+.dropdown-menu li a:hover {
+    background: #eef1ff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Invoice Page */
+.invoice-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 60px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.invoice-header {
+    background: #2a2f4a;
+    color: white;
+    padding: 30px 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.invoice-header h1 {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+}
+
+.invoice-header p {
+    margin: 5px 0;
+}
+
+.invoice-info h2 {
+    color: white;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.invoice-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.invoice-container input,
+.invoice-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #9fb3c8;
+    border-radius: 8px;
+}
+
+.invoice-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    margin: 40px 0;
+}
+
+.invoice-details h3 {
+    color: #2a2f4a;
+    font-size: 22px;
+}
+
+.invoice-container textarea {
+    height: 95px;
+}
+
+.invoice-items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.invoice-items th {
+    background: #2a2f4a;
+    color: white;
+    padding: 12px;
+}
+
+.invoice-items td {
+    border: 1px solid #9fb3c8;
+    padding: 10px;
+}
+
+.invoice-amount {
+    text-align: right;
+    font-weight: bold;
+}
+
+.invoice-totals {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.invoice-totals div {
+    width: 300px;
+}
+
+.invoice-totals p,
+.invoice-totals h3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+}
+
+.invoice-totals span {
+    border: 1px solid #9fb3c8;
+    padding: 10px;
+    text-align: center;
+}
+
+#invoice-total {
+    background: #2a2f4a;
+    color: white;
+}
+
+.invoice-footer {
+    margin-top: 40px;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+    }
+
+    .invoice-header,
+    .invoice-details {
+        display: block;
+    }
+
+    .invoice-container {
+        padding: 25px;
+    }
+    .invoice-clear-btn {
+    margin-top: 25px;
+    background: #2a2f4a;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.invoice-clear-btn:hover {
+    background: #3d456d;
+}
+}
+</style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="header">
+        <div class="nav-logo">
+            <a href="index.html">Mohammed Naeem</a>
+        </div>
+    
+        <ul class="nav-menu">
+            <li><a href="index.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+    
+            <li class="dropdown">
+                <a href="#">Assignments ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="php.html">PHP Loops</a></li>
+                    <li><a href="javascript.html">JavaScript Presentation</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="random.html">Random Assignment</a></li>
+                    <li><a href="paycheck.html">Salary Calculator</a></li>
+                    <li><a href="guestbook.html">Guestbook</a></li>
+                    <li><a href="mortgage.html">Mortgage Calculator</a></li>
+                    <li><a href="debugging.html">Debugging and Pseudo Code</a></li>
+                    <li><a href="invoice.html">Invoice</a></li>
+
+                </ul>
+            </li>
+    
+            <li class="dropdown">
+                <a href="#">Forms ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/index.html?i=1">PHP Form</a></li>
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/sqlform.html">SQL Form</a></li>
+                </ul>
+            </li>
+    
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+<main class="invoice-container">
+    <header class="invoice-header">
+        <div>
+            <h1>MO EVENT SERVICES</h1>
+            <p>123 Business Street</p>
+            <p>Brooklyn, NY 11201</p>
+            <p>Email: contact@motech.com</p>
+            <p>Phone: (555) 123-4567</p>
+        </div>
+
+        <div class="invoice-info">
+            <h2>INVOICE</h2>
+            <label>Invoice #</label>
+            <input type="text" value="1001">
+
+            <label>Date</label>
+            <input type="date">
+
+        
+        </div>
+    </header>
+
+    <section class="invoice-details">
+        <div>
+            <h3>Bill To</h3>
+            <input type="text" placeholder="Client Name">
+            <input type="text" placeholder="Client Address">
+            <input type="email" placeholder="Client Email">
+        </div>
+
+        <div>
+            <h3>For</h3>
+            <textarea placeholder="Description of service"></textarea>
+        </div>
+    </section>
+
+    <section class="invoice-items">
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="Service/item"></td>
+                    <td><input type="number" class="invoice-qty" value="1"></td>
+                    <td><input type="number" class="invoice-rate" value="0"></td>
+                    <td class="invoice-amount">$0.00</td>
+                </tr>
+
+                <tr>
+                    <td><input type="text" placeholder="Service/item"></td>
+                    <td><input type="number" class="invoice-qty" value="1"></td>
+                    <td><input type="number" class="invoice-rate" value="0"></td>
+                    <td class="invoice-amount">$0.00</td>
+                </tr>
+
+                <tr>
+                    <td><input type="text" placeholder="Service/item"></td>
+                    <td><input type="number" class="invoice-qty" value="1"></td>
+                    <td><input type="number" class="invoice-rate" value="0"></td>
+                    <td class="invoice-amount">$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="invoice-totals">
+        <div>
+            <p>Subtotal: <span id="invoice-subtotal">$0.00</span></p>
+            <p>Tax 8.875%: <span id="invoice-tax">$0.00</span></p>
+            <h3>Total: <span id="invoice-total">$0.00</span></h3>
+        </div>
+    </section>
+    <button type="button" class="invoice-clear-btn" onclick="clearInvoice()">Clear All</button>
+
+    <footer class="invoice-footer">
+        <p><strong>Notes:</strong> Thank you for your business.</p>
+        <p>Please contact us if you have any questions about this invoice.</p>
+    </footer>
+</main>
+
+<script>
+    const qtyInputs = document.querySelectorAll(".invoice-qty");
+    const rateInputs = document.querySelectorAll(".invoice-rate");
+    
+    function calculateInvoice() {
+        let subtotal = 0;
+    
+        const rows = document.querySelectorAll(".invoice-items tbody tr");
+    
+        rows.forEach(row => {
+            const qty = Number(row.querySelector(".invoice-qty").value) || 0;
+            const rate = Number(row.querySelector(".invoice-rate").value) || 0;
+    
+            const amount = qty * rate;
+    
+            row.querySelector(".invoice-amount").textContent =
+                "$" + amount.toFixed(2);
+    
+            subtotal += amount;
+        });
+    
+        const tax = subtotal * 0.08875;
+        const total = subtotal + tax;
+    
+        document.getElementById("invoice-subtotal").textContent =
+            "$" + subtotal.toFixed(2);
+    
+        document.getElementById("invoice-tax").textContent =
+            "$" + tax.toFixed(2);
+    
+        document.getElementById("invoice-total").textContent =
+            "$" + total.toFixed(2);
+    }
+    
+    function autoFillDateTime() {
+        const now = new Date();
+    
+        const dateInput = document.getElementById("invoice-date");
+    
+        if (dateInput) {
+            dateInput.value = now.toISOString().split("T")[0];
+        }
+    
+        const timeInput = document.getElementById("invoice-time");
+    
+        if (timeInput) {
+            timeInput.value = now.toLocaleTimeString();
+        }
+    }
+    
+    function clearInvoice() {
+    
+        document.querySelectorAll(".invoice-container input").forEach(input => {
+    
+            if (input.classList.contains("invoice-qty")) {
+                input.value = 1;
+    
+            } else if (input.classList.contains("invoice-rate")) {
+                input.value = 0;
+    
+            } else if (
+                input.id !== "invoice-date" &&
+                input.id !== "invoice-time"
+            ) {
+                input.value = "";
+            }
+        });
+    
+        document.querySelectorAll(".invoice-container textarea").forEach(textarea => {
+            textarea.value = "";
+        });
+    
+        document.querySelectorAll(".invoice-amount").forEach(amount => {
+            amount.textContent = "$0.00";
+        });
+    
+        calculateInvoice();
+        autoFillDateTime();
+    }
+    
+    qtyInputs.forEach(input => {
+        input.addEventListener("input", calculateInvoice);
+    });
+    
+    rateInputs.forEach(input => {
+        input.addEventListener("input", calculateInvoice);
+    });
+    
+    autoFillDateTime();
+    calculateInvoice();
+</script>
+
+</body>
+</html>
