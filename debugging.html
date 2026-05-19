@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="assets/css/main.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debugging & Pseudo Code</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      color: #222;
+    }
+
+    .mn-nav {
+      background-color: #2a2f4a;
+      padding: 15px 30px;
+    }
+
+    .mn-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .mn-menu li {
+      position: relative;
+    }
+
+    .mn-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      display: block;
+    }
+
+    .mn-menu a:hover {
+      background-color: #44506f;
+      border-radius: 5px;
+    }
+
+    .mn-dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 230px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      z-index: 999;
+    }
+
+    .mn-dropdown-menu li a {
+      color: #2a2f4a;
+      padding: 12px;
+    }
+
+    .mn-dropdown:hover .mn-dropdown-menu {
+      display: block;
+    }
+
+    .mn-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .mn-page-intro {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    .mn-badge {
+      background-color: #2a2f4a;
+      color: white;
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .mn-flowchart-card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .mn-flowchart-card img {
+      max-width: 100%;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .mn-flowchart-card pre {
+      background-color: #1e1e1e;
+      color: #00ffcc;
+      text-align: left;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .mn-footer {
+      background-color: #2a2f4a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .mn-footer a {
+      color: #dfe6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="header">
+        <div class="nav-logo">
+            <a href="index.html">Mohammed Naeem</a>
+        </div>
+    
+        <ul class="nav-menu">
+            <li><a href="index.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+    
+            <li class="dropdown">
+                <a href="#">Assignments ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="php.html">PHP Loops</a></li>
+                    <li><a href="javascript.html">JavaScript Presentation</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="random.html">Random Assignment</a></li>
+                    <li><a href="paycheck.html">Salary Calculator</a></li>
+                    <li><a href="guestbook.html">Guestbook</a></li>
+                    <li><a href="mortgage.html">Mortgage Calculator</a></li>
+                    <li><a href="debugging.html">Debugging and Pseudo Code</a></li>
+                </ul>
+            </li>
+    
+            <li class="dropdown">
+                <a href="#">Forms ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/index.html?i=1">PHP Form</a></li>
+                    <li><a href="https://freephpformbis31monaeem.infinityfreeapp.com/sqlform.html">SQL Form</a></li>
+                </ul>
+            </li>
+    
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+  <div class="mn-container">
+
+    <div class="mn-page-intro">
+      <h1>Debugging & Pseudo Code</h1>
+     
+    </div>
+
+    <div class="mn-flowchart-card">
+      <h2>Flowchart 1 — Miles Per Gallon</h2>
+      <img src="images/Flowchart1.png" alt="Flowchart 1 - Miles Per Gallon">
+      <h4>Debugged Pseudocode</h4>
+      <pre>start
+  input milesTraveled
+  input gallonsOfGasUsed
+  milesPerGallon = milesTraveled / gallonsOfGasUsed
+  output milesPerGallon
+stop</pre>
+    </div>
+
+    <div class="mn-flowchart-card">
+      <h2>Flowchart 2 — Cost Per Day</h2>
+      <img src="images/Flowchart2.png" alt="Flowchart 2 - Cost Per Day">
+      <h4>Debugged Pseudocode</h4>
+      <pre>start
+  input rent
+  costPerDay = rent / 30
+  output costPerDay
+stop</pre>
+    </div>
+
+    <div class="mn-flowchart-card">
+      <h2>Flowchart 3 — Tablespoons to Teaspoons</h2>
+      <img src="images/Flowchart3.png" alt="Flowchart 3 - Tablespoons to Teaspoons">
+      <h4>Debugged Pseudocode</h4>
+      <pre>start
+  input tablespoons
+  teaspoons = tablespoons * 3
+  output teaspoons
+stop</pre>
+    </div>
+
+    <div class="mn-flowchart-card">
+      <h2>Flowchart 4 — Monthly Budget</h2>
+      <img src="images/flowchart4.drawio.png" alt="Flowchart 4 - Monthly Budget">
+      <h4>Debugged Pseudocode</h4>
+      <pre>start
+  input monthlyPay
+  input rent
+  input utilities
+  input groceries
+
+  totalBills = rent + utilities + groceries
+  discretionary = monthlyPay - totalBills
+
+  output monthlyPay
+  output totalBills
+  output discretionary
+stop</pre>
+    </div>
+
+  </div>
+
+  <footer class="mn-footer">
+    <p>© Copyright 2026. All Rights Reserved.</p>
+    <p><a href="mailto:mohammednaeem2001@gmail.com">mohammednaeem2001@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
